@@ -8,75 +8,68 @@ while True:
     # add water reading input
     # check jug X
     if x < 4:
-        water_in_X = int(input("pour water to X : ")); 
-        x += water_in_X; 
+        water_in_X = input("pour water to X (Y/N)"); 
+        if water_in_X == "Y":
+            x = 4; 
 
     # check jug Y
     if y < 3:
-        water_in_Y = int(input("pour water to Y : ")); 
-        y += water_in_Y; 
+        water_in_Y = input("pour water to Y (Y/N)"); 
+        if water_in_Y == "Y":
+            y = 3; 
 
     #################################
 
     if x >= 4 :
         print("jug x is full and its 4 l"); 
         x = 4; # X max = 4 
-        displace_to_y = input("displace water in to Y (Y/N)"); 
-
-        if displace_to_y == "N": 
-            water_in_Y = int(input("pour water to Y : ")); 
-            y += water_in_Y; 
-
-        if displace_to_y == "y":
-            dispalcement = 3-y; 
-            x = x - dispalcement; 
-            y += dispalcement; 
-
-        empty_X = input("Empty the jug X (Y/N)"); 
-
-        if empty_X == "Y":
-            x=0; 
-
-        empty_Y = input("Empty the jug Y (Y/N)"); 
-
-        if empty_Y == "y":
-            y = 0; 
-
-    # check jug Y
 
     if y >= 3 :
         print("jug y is full and its 3 l"); 
-        x = 3; # X max = 4 
-        displace_to_X = input("displace water in to x (Y/N)"); 
+        y = 3; # X max = 3
 
-        if displace_to_X == "N": 
-            water_in_X = int(input("pour water to x : ")); 
-            x += water_in_X; 
+    displace_to_y = input("displace water in X to Y (Y/N)"); 
 
-        if displace_to_X == "y":
-            dispalcement = y-x; 
-            y = y - dispalcement; 
-            x += dispalcement; 
-
-        empty_Y = input("Empty the jug X (Y/N)"); 
-
-        if empty_Y == "Y":
-            y=0; 
-
-        empty_X = input("Empty the jug Y (Y/N)"); 
-
-        if empty_X == "y":
-            x = 0; 
+    if displace_to_y == "Y":
+        dispalcement = 3-y; 
+        if dispalcement >= x: 
+            y += x;
+            x = 0;
+        else:
+            x = x - dispalcement; 
+            y += dispalcement; 
     
+    print("Y:" + str(y) + "l X:"+ str(x) + "l");  
+    displace_to_X = input("displace water in Y to x (Y/N)");  
+
+    if displace_to_X == "Y":
+        dispalcement = 4-x; 
+        if dispalcement >= y: 
+            x += y;
+            y = 0;
+
+        else:
+            y = y - dispalcement; 
+            x += dispalcement;
+    
+    print("Y:" + str(y) + "l X:"+ str(x) + "l"); 
+    empty_X = input("Empty the jug X (Y/N)"); 
+
+    if empty_X == "Y":
+        x=0; 
+
+    print("Y:" + str(y) + "l X:"+ str(x) + "l"); 
+    empty_Y = input("Empty the jug Y (Y/N)"); 
+
+    if empty_Y == "Y":
+        y = 0; 
+    print("Y:" + str(y) + "l X:"+ str(x) + "l"); 
     if(x == 2 ):
-        empty_Y = input("Empty the jug Y (Y/N)"); 
-        if empty_Y == "Y":
-            y=0; 
-            print("you got the answer jug Y : "+ y + "jug X : " + x); 
+        y=0; 
+        print("you got the answer jug Y : "+ str(y) + "jug X : " + str(x)); 
+        break;
     
     if(y == 2 ):
-        empty_X = input("Empty the jug X (Y/N)"); 
-        if empty_X == "Y":
-            x=0; 
-            print("you got the answer jug Y : "+ y + "jug X : " + x); 
-    
+        x=0; 
+        print("you got the answer jug Y : "+ str(y) + "jug X : " + str(x)); 
+        break;
