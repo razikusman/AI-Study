@@ -22,8 +22,6 @@ if tv > cap_X and tv > cap_Y:
 
 smaller = jug.Jug(min(cap_X, cap_Y), 'Jug 1')
 
-action_count = [0, 0]
-
 larger = jug.Jug(max(cap_X, cap_Y), 'Jug 2')
 
 
@@ -39,13 +37,11 @@ def execute(smaller, larger):
     
     if smaller.is_empty():
         smaller.fill()
-        action_count[0] += 1
         print('op-A -> [', smaller.current_volume, ',', larger.current_volume,']')
         return True
   
     if larger.is_full():
         larger.dump()
-        action_count[1] -= 1
         print('op-B -> [', smaller.current_volume, ',', larger.current_volume,']')
         return True
 
@@ -58,13 +54,11 @@ def executes(smaller, larger):
     
     if larger.is_empty():
         larger.fill()
-        action_count[0] += 1
         print('op-A -> [', smaller.current_volume, ',', larger.current_volume,']')
         return True
   
     if smaller.is_full():
         smaller.dump()
-        action_count[1] -= 1
         print('op-B -> [', smaller.current_volume, ',', larger.current_volume,']')
         return True
 
@@ -102,6 +96,3 @@ while not(found_its):
 print("__________________________________________________________________")
 print('found target volume in', step_count, 'steps')
 print('found target volume in', step_counts, 'steps')
-
-
-# print(action_count)
